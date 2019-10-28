@@ -1,0 +1,168 @@
+.uploadSection,
+.howItWorksSection {
+    background-color: #3a4352;
+}
+
+.uploadIcon {
+    background-image: url("../../Assets/Png/upload.png");
+    position: absolute;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+}
+
+.advantagesSection,
+.uploadSection,
+.infoSection,
+.howItWorksSection,
+.faqSection
+ {
+    h2,
+    h3 {
+        color: #00b4cb;
+    }
+}
+
+.uploadSection {
+    h1 {
+        color: #ffffff;
+    }
+    input[type="email"] {
+        margin-right: 15px;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        border: 0;
+        padding: 9px;
+    }
+
+    label {
+        display: block;
+    }
+
+    @media (min-width: 769px) {
+        .breakerHiderDesktop{
+            display: none;
+        }
+    }
+}
+
+.uploadSection,
+.aboutUsSection {
+    color: #ffffff;
+}
+
+.howItWorksAnchor,
+.uploadAnchor {
+    top: -97px;
+    position: relative;
+}
+
+.infoSection {
+    h1 {
+        margin-top: 15px;
+    }
+
+    @media (min-width: 769px) {
+        background-image: url("../../Assets//backimagepayper.jpg");
+        background-repeat: no-repeat;
+
+        .breakerHiderDesktop {
+            display: none;
+        }
+
+        .typed-element {
+            font-size: 4rem;
+        }
+    }
+}
+
+.howItWorksSection {
+    color: #bcbec0;
+    font-size: 0.8em;
+
+    .indexNumber {
+        color: #a9c731;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .staticItem {
+        display: inline-block;
+        max-width: 230px;
+        padding: 26px;
+    }
+
+    .static {
+        display: none;
+    }
+
+    @media (min-width: 769px) {
+        .static {
+            display: initial;
+        }
+
+        .arrowNext {
+            background-image: url("../../Assets/Icons/arrow-down.svg");
+            background-repeat: no-repeat;
+            background-size: 35px;
+            transform: rotate(-90deg);
+            height: 35px;
+            width: 35px;
+            margin-left: 40px;
+        }
+
+        .arrowWrapper {
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        p-carousel {
+            display: none;
+        }
+    }
+}
+
+.faqSection {
+    p-accordion {
+        text-align: left;
+    }
+    .twoColumns {
+        display: none;
+    }
+    @media (min-width: 769px) {
+        .twoColumns {
+            display: flex;
+        }
+        .oneColumn {
+            display: none;
+        }
+    }
+}
+
+.advantagesSection{
+    h2 {
+        margin-top: 10px;
+    }
+
+    img {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    @media (min-width: 769px) {
+        div.container > ul > li {
+            display: inline-block;
+            width: 33.3%;
+        }
+
+        .breakerHiderDesktop {
+            display: none;
+        }        
+    }
+} 
+
+.aboutUsSection {
+    background-color: #00b4cb;
+}

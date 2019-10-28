@@ -1,0 +1,80 @@
+<section name="profile" class="profileSection alignLeft">
+    <div class="container myProfile">
+        <h2>O meu perfil</h2>
+        <div class="row">
+                <div class="col-3 profileImage">
+                    <img src="../../Assets/Icons/profile-color.svg" width="90px" />
+                </div>
+                <div class="col primaryInfo form-group">
+                    <label>Nome</label>
+                    <div><p>{{ User.Name }}</p></div>
+                    <label>E-mail</label>
+                    <div><p>{{ User.Email }}</p></div>
+
+                    <button class="button" (click)="Logout()">Logout</button>
+                </div>
+        </div>
+    </div>
+    <div class="container emailForInvoices">
+        <h2>Envio de faturas por email</h2>
+        <div class="textSmall">Enviar faturas para: <br/></div>
+        <div class="row">
+            <div class="col-8">
+                <div class="textSmall"><strong>faturas+{{ User.Id }}@payper.pt</strong> </div>
+            </div>
+            <div class="col-4">
+                <div class="copyLogo" (click)="CopyTextToClipboard('https://www.payper.pt/')" pTooltip="{{TooltipText}}" hideDelay="1000"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container contractedServices">
+        <h2>Os meus serviços</h2>
+        <div *ngIf="ContractedServices.length == 0">
+            Ainda não tem serviços. Carregue faturas para desbloquear esta área.
+        </div>
+        <div class="row" *ngFor="let service of ContractedServices;">
+            <div class="col-2">
+                <img src="../../Assets/Icons/Functions/{{service.Type | lowercase }}.svg" width="40px">
+            </div>
+            <div class="col serviceDescription">
+                <p>{{service.Type | translateServiceTypePipe}} <br/><span class="textExtraSmall address">{{ service.Address.CityName }}, {{ service.Address.Line }}</span></p>
+            </div>
+            <div class="col-3 textSmall">
+                <a href="#" [routerLink]="['/contracted-service', service.Id]">Ver Contrato</a>
+            </div>
+        </div>
+    </div>
+    <div class="container socialMediaShare">
+        <h2>Convida os teus amigos</h2>
+        <p class="textExtraSmall">Copia este link e envia para os teus amigos se juntarem a poupar contigo!</p>
+        <div class="row">
+            <div class="col" style="padding-right: 0;">
+                <div class="copyShare textSmall">
+                    https://www.payper.pt/
+                </div>
+                <div class="facebookShare textSmall">
+                    Partilhar no Facebook:
+                </div>
+                <div class="twitterShare textSmall">
+                   Partilhar no Twitter:
+                </div>
+            </div>
+            <div class="col" style="padding-left: 1px;">
+                <div>
+                    <div class="copyLogo" (click)="CopyTextToClipboard('https://www.payper.pt/')" pTooltip="{{TooltipText}}" hideDelay="1000"></div>
+                </div>
+                <div>
+                    <a href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.payper.pt/','facebook-share-dialog', 'width=626,height=436');" class="darkThemeLink" title="facebook">
+                        <div class="facebookLogo"></div>
+                    </a>  
+                </div>
+                <div>
+                    <a href="javascript:window.open('http://twitter.com/intent/tweet?url=http://www.payper.pt/','twitter-share-dialog', 'width=626,height=436');" class="darkThemeLink" title="twitter">
+                        <div class="twitterLogo"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    

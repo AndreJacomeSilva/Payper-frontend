@@ -1,0 +1,103 @@
+<header class="fixed-top">
+    <div class="container" [ngClass]="{'aligned-left': CurrentLocation != '/home'}">
+        <div class="row">
+            <div class="col">
+                <div class="logo" routerLinkActive='active' [routerLink]="['']">
+                    <img alt="Payper logo with colors" src="../Assets/Icons/logo.svg" width="156px">
+                </div>
+            </div>
+            <div class="col" [hidden]="IsUserLoggedIn()">
+                <div (click)="Login()" class="login">ENTRAR &nbsp; <img alt="login" src="./Assets/Icons/Functions/login.svg" width="25px" /></div>
+            </div>
+            <div class="col" [hidden]="!IsUserLoggedIn()">
+                <a href="#" [routerLink]="['/profile']">
+                    <div class="dropdownMenu">
+                        <div class="btn button btn-ripple">
+                            <span>{{UserName()}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-1 col-xl-1" *ngIf="CurrentLocation != '/home' && CurrentLocation != '/privacy'">
+            <nav>
+                <div class="navbar navbar-dark fixed-bottom bg-dark px-0 flex-row flex-nowrap">
+                    <ul class="navbar-nav mr-auto nav flex-sm-column flex-row">
+                        <li class="nav-item btn-ripple">
+                            <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/dashboard']"><div class="dashboardLink"></div></a>
+                        </li>
+                        <li class="nav-item btn-ripple">
+                            <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/invoices']"><div class="listLink"></div></a>
+                        </li>
+                        <li class="nav-item btn-ripple">
+                            <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/upload']"><div class="uploadCircle"><div class="uploadLink"></div></div></a>
+                        </li>
+                        <li class="nav-item btn-ripple">
+                            <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/comparison']"><div class="compareLink"></div></a>
+                        </li>
+                        <li class="nav-item btn-ripple">
+                            <a class="nav-link" href="#" routerLinkActive='active' [routerLink]="['/alerts']"><div class="alertsLink"></div></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col mainContent">
+            <main [@routerTransition]="GetAnimation(routerOutlet)" class="routeContainer">
+                <router-outlet #routerOutlet="outlet"></router-outlet>
+            </main>
+        </div>
+    </div>
+    <go-to-top ShowScrollHeight="50" HideScrollHeight="50"></go-to-top>
+</div>
+
+<footer *ngIf="CurrentLocation == '/home' || CurrentLocation == '/privacy'">
+    <div class="container">
+        <div class="row socialMedia">
+            <div class="col">
+                <a aria-label="Conta Youtube do Payper" href="#" target="_blank" rel="noreferrer">
+                    <img alt="youtube logo" src="../Assets/Icons/Social/youtube-logo.svg" width="25px"/>
+                </a>
+            </div>  
+            <div class="col">
+                <a aria-label="Conta Instagram do Payper" href="https://www.instagram.com/payper_app/" target="_blank" rel="noreferrer">
+                    <img alt="instagram logo" src="../Assets/Icons/Social/instagram-big-logo.svg" width="25px"/>
+                </a>
+            </div>
+            <div class="col">
+                <a aria-label="Conta Facebook do Payper" href="https://fb.me/payperapp" target="_blank" rel="noreferrer">
+                    <img alt="facebook logo" src="../Assets/Icons/Social/facebook-logo.svg" width="25px"/>
+                </a>
+            </div>
+            <div class="col">
+                <a aria-label="Conta Twitter do Payper" href="https://twitter.com/Payper77212617" target="_blank" rel="noreferrer">
+                    <img alt="twitter logo" src="../Assets/Icons/Social/twitter-sign.svg" width="25px"/>
+                </a>
+            </div>
+            <div class="col">
+                <a aria-label="Conta Blogger do Payper" href="https://payperapp.blogspot.com" target="_blank" rel="noreferrer">
+                    <img alt="blogger logo" src="../Assets/Icons/Social/blogger-logo.svg" width="25px"/>
+                </a>
+            </div>
+        </div>
+        <div class="row textSmall policies">
+            <div class="col">
+                <a href="#" [routerLink]="['/privacy']">Política de Privacidade</a> &bull; 
+                <a href="https://payper.featureupvote.com/" target="_blank" rel="noreferrer" aria-label="Sugestões e melhorias">Sugestões & Melhorias</a>
+            </div>
+        </div>
+        
+        <div class="textSmall">
+            Payper App v0.2
+            <br />
+            <br />
+        </div>
+    </div>
+</footer>
+
+<app-toaster [show]="UpdateAvailable"></app-toaster>

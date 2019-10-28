@@ -1,0 +1,35 @@
+.scroll-to-top {
+    background: #323a45;
+    background-image: url("../../../Assets/Icons/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: 7px 8px;
+    background-size: 25px;
+    transform: rotate(180deg);
+	color: #00b4cb;
+	border: none;
+	cursor: pointer;
+	border-radius: 40px;
+	height: 40px;
+	width: 40px;
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	opacity: 0;
+    transition: all .2s ease-in-out;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(166, 166, 166, 0.30);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(166, 166, 166, 0.30);
+    box-shadow: 0px 0px 5px 3px rgba(166, 166, 166, 0.30);
+    z-index: 999;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.show-scroll {
+	opacity: 1;
+
+	&:focus {
+		outline: none;
+	}
+}

@@ -1,0 +1,16 @@
+.invoicesTabMenu {
+    text-align: left;
+    a {
+        color: #00AFBC; 
+        padding: 0;
+        text-decoration: none;
+    }
+    
+    a.active {
+        color: #fff;
+    }
+
+    .tabsContainer {
+        padding-top: 20px;
+    }
+}

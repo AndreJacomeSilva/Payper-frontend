@@ -1,0 +1,5 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target" : { "namespace": "android_app", "package_name": "pt.cside.payper",
+                 "sha256_cert_fingerprints": ["9B:6A:B7:2A:00:74:28:67:A1:76:64:6E:F8:80:C8:8B:0B:9F:F9:24:A2:87:06:C7:08:44:FB:53:99:CB:46:43"] }
+  }]

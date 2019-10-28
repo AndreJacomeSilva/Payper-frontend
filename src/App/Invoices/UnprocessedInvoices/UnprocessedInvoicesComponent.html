@@ -1,0 +1,23 @@
+<section name="invoices" class="invoicesSection">
+    <div class="container">
+            <p-table #dt [columns]="TableColumns" [value]="Invoices" [paginator]="true" [rows]="10" sortField="UploadDate" sortOrder="-1">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}" [pSortableColumn]="col.field">
+                            {{col.header}}
+                            <p-sortIcon *ngIf="col.field != 'service'" [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns" [ngSwitch]="col.field" [ngClass]="col.field">
+                            <span *ngSwitchCase="'OriginalName'" ngClass="OriginalName">{{rowData[col.field]}}</span>
+                            <span *ngSwitchCase="'UploadDate'">{{rowData[col.field] | date}}</span>
+                            <span *ngSwitchCase="'StatusCodeName'" ngClass="{{rowData[col.field]}}">{{rowData[col.field] | fileStatusCodeNames}}</span>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+    </div>
+</section>

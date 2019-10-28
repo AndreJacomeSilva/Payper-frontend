@@ -1,0 +1,240 @@
+<div>
+    <section name="info" class="infoSection">
+        <div class="container">
+            <h1>
+                Serviço gratuito online
+                <br class="breakerHiderDesktop"/>
+                que lhe permite
+                <br />
+                OTIMIZAR | GERIR | POUPAR
+                <br />
+                os pagamentos de <br/> <span class="typed-element"></span>  
+            </h1>
+            <img id="serviceLogo" alt="{{CurrentService.AlternateText}}" src="./Assets/Icons/Functions/{{CurrentService.Codename}}.svg" width="150px"/>
+            <br /><br />
+            <h3>O seu gestor das contas da casa!</h3>
+        </div>    
+    </section>
+
+    <section name="upload" class="uploadSection">
+        <div class="uploadAnchor" #upload></div>
+        
+        <div class="container">
+            <!-- <h1>A confusão das faturas <br class="breakerHiderDesktop" />termina em...</h1>
+            <countdown [Date]="'November 15, 2019 16:00:00'"></countdown>
+            <div class="textSmall">Disponível Brevemente!</div>
+            <br />
+            <div *ngIf="!HasAlreadySubscribedNewsletter">
+                <label for="newsletterEmail" class="textSmall">Seja notificado das nossas novidades:</label>
+                <input id="newsletterEmail" alt="Email da newsletter" type="email" [(ngModel)]="NewsletterEmail" placeholder="exemplo@exemplo.com"/>
+                <button class="button" (click)="SubscribeNewsletter()">
+                    Subscrever
+                </button>
+            </div>
+            <span class="textSmall" *ngIf="HasAlreadySubscribedNewsletter">Email registado, fique atento!</span>
+            <span class="textSmall error" *ngIf="NewsletterError">{{NewsletterError}}</span> -->
+            <h1>CARREGUE</h1>
+            <h2>A SUA FATURA</h2>
+            <img alt="upload" src="./Assets/Icons/Functions/upload.svg" width="150px"/>
+            <br /><br />
+            <button class="button" (click)="LoginRedirectToUpload()">
+                Comece a poupar
+            </button>
+            <br />
+            <a (click)="Scroll(howItWorks)"><div class="textSmall link">Como funciona o payper?</div></a>
+        </div>
+    </section>
+</div>
+
+<section name="advantages" class="advantagesSection">
+    <div class="container">
+            <h2>Principais vantagens</h2>
+            <ul>
+                <li>
+                    <div>
+                        <h1>Poupança</h1>
+                        <ul>
+                            <li>
+                                Descubra o tarifário mais barato do mercado para o seu caso específico.
+                            </li>
+                            <li>
+                                Compare o seu tarifário com os seus vizinhos e amigos.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img alt="poupança" src="../../Assets/Png/savings.png" width="300px"/>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1>Tranquilidade</h1>
+                        <ul>
+                            <li>
+                                Gestor online de todas as suas faturas:
+                            </li>
+                            <li>
+                                - Avisos caso os preços aumentem;
+                            </li>
+                            <li>
+                                - Avisos se existir um melhor tarifário;
+                            </li>
+                            <li>
+                                - Avisos quando o periodo de fidelização termina.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img alt="paz de espírito" src="../../Assets/Png/peaceofmind.png" width="300px"/>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1>Transparência</h1>
+                    <ul>
+                        <li>
+                            Análise independente a todas as ofertas do mercado.
+                        </li>
+                        <li>
+                            Apenas será contactado se solicitar alteração de contrato.
+                        </li>
+                    </ul>
+                    </div>
+                    
+                    <div>
+                        <img alt="Transparência" src="../../Assets/Png/transparency.png" width="300px" />
+                    </div>
+                </li>
+            </ul>
+            <span class="textSmall">Garantimos a privacidade<br class="breakerHiderDesktop" /> no processamento dos dados</span>
+    </div>
+</section>
+
+<div>
+    <section name="how-it-works" class="howItWorksSection">
+            <div class="howItWorksAnchor" #howItWorks></div>
+            <div class="container">
+                <h2>Como funciona o payper ?</h2>
+                <div class="static">
+                    <div *ngFor="let item of HowItWorksItems; last as isLast" class="staticItem">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12 indexNumber">
+                                    {{item.Index}}º
+                                </div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-9" style="height: 122px;">
+                                    <img alt="{{item.Icon}}" src="Assets/Icons/HowItWorks/{{item.Icon}}.svg" width="125px" style="margin-left:24px;">
+                                </div>
+                                <div class="ui-grid-col-3" style="position: relative;">
+                                    <div class="arrowWrapper">
+                                        <div class="arrowNext" *ngIf="!isLast"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-6 sliderText">{{item.Text}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p-carousel [value]="HowItWorksItems" numVisible="1" circular="circular" pageLinks="5">
+                    <ng-template let-item pTemplate="item">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12 indexNumber">{{item.Index}}º</div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12"><img alt="{{item.Icon}}" src="Assets/Icons/HowItWorks/{{item.Icon}}.svg" width="125px"></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-6 sliderText">{{item.Text}}</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+                <a (click)="Scroll(upload)"><div class="textSmall link">Voltar</div></a>
+            </div>
+        </section>
+        
+        <section name="faq" class="faqSection">
+            <div class="container">
+                <h2>FAQ</h2>
+                <div class="row twoColumns">
+                    <div class="col">
+                        <p-accordion>
+                            <p-accordionTab header="Quem tem acesso às minhas faturas?">
+                                O Payper é um sistema informático que analisa as faturas enviadas pelos clientes, extrai apenas a informação necessária para fornecer os serviços de comparação e gestão, e armazena uma cópia da fatura num servidor encriptado.
+                                Apenas as faturas que não poderem ser automáticamente processadas, poderão vir a ser analisadas por um operador, para melhorar os processos de extração de informação.                    
+                            </p-accordionTab>
+                            <p-accordionTab header="Garantem os melhores preços do mercado?">
+                                Os tarifários de eletricidade e gás disponibilizados no Payper são obtidos através da entidade reguladora do mercado, a ERSE. Os tarifários de telecomunicação são obtidos através dos portais dos diferentes operadores.
+                                Os tarifários da água são obtidos através do processamento das faturas da comunidade.
+                            </p-accordionTab>
+                            <p-accordionTab header="Qual é o processo de migração de fornecedor?">
+                                O Payper é uma ferramenta automática que agiliza o processo de migração de fornecedor. Apenas após ter confirmado a sua intenção de mudar para um fornecedor recomendado, o Payper envia, de forma eletrónica, todos os dados necessários para o respetivo fornecedor, o qual poderá vir a entrar em contacto consigo caso seja necessária mais alguma informação ou documento.
+                            </p-accordionTab>
+                            <p-accordionTab header="É garantida a imparcialidade de fornecedores?">
+                                O Payper mostra sempre qual é o tarifário mais barato do mercado. O tarifário recomendado é baseado não só no preço, como também pela votação do resto da comunidade e pontuação pela própria equipa do Payper.                    
+                            </p-accordionTab>
+                        </p-accordion>
+                    </div>
+
+                    <div class="col">
+                        <p-accordion>
+                            <p-accordionTab header="Posso ser alertado caso venha a existir um novo tarifário mais barato?">
+                                Cada vez que um novo tarifário é lançado no mercado, o Payper analisa todos os clientes que tenham uma fatura introduzida com menos de 6 meses e, caso a poupança anual seja superior a 10 Euros, envia um alerta através de email e Push Notification a notificar a existência de um tarifário mais barato.
+                            </p-accordionTab>
+                            <p-accordionTab header="Quantas faturas posso carregar na minha conta?">
+                                Pode inserir quantas faturas desejar. Aliás, para a comparação de tarifário de eletricidade e gás, o ideal é ter pelo menos duas faturas, com um ano de intervalo - para podermos analisar a sua distribuição de consumo ao longo de um ano completo.
+                                As faturas com mais de 3 anos serão automaticamente eliminadas para poupar espaço.                    
+                            </p-accordionTab>
+                            <p-accordionTab header="Como é que posso inserir as minhas faturas?">
+                                O Payper permite que insira as suas faturas diretamente, usando a App, fazendo o forward do email da fatura para um endereço específico ou, usando um dos plugins disponibilizados para o Gmail ou Hotmail de reencaminhamento automático.       
+                            </p-accordionTab>
+                        </p-accordion>
+                    </div>
+                </div>
+                <div class="oneColumn">
+                    <p-accordion>
+                        <p-accordionTab header="Quem tem acesso às minhas faturas?">
+                            O Payper é um sistema informático que analisa as faturas enviadas pelos clientes, extrai apenas a informação necessária para fornecer os serviços de comparação e gestão, e armazena uma cópia da fatura num servidor encriptado.
+                            Apenas as faturas que não poderem ser automáticamente processadas, poderão vir a ser analisadas por um operador, para melhorar os processos de extração de informação.                    
+                        </p-accordionTab>
+                        <p-accordionTab header="Garantem os melhores preços do mercado?">
+                            Os tarifários de eletricidade e gás disponibilizados no Payper são obtidos através da entidade reguladora do mercado, a ERSE. Os tarifários de telecomunicação são obtidos através dos portais dos diferentes operadores.
+                            Os tarifários da água são obtidos através do processamento das faturas da comunidade.
+                        </p-accordionTab>
+                        <p-accordionTab header="Qual é o processo de migração de fornecedor?">
+                            O Payper é uma ferramenta automática que agiliza o processo de migração de fornecedor. Apenas após ter confirmado a sua intenção de mudar para um fornecedor recomendado, o Payper envia, de forma eletrónica, todos os dados necessários para o respetivo fornecedor, o qual poderá vir a entrar em contacto consigo caso seja necessária mais alguma informação ou documento.
+                        </p-accordionTab>
+                        <p-accordionTab header="É garantida a imparcialidade de fornecedores?">
+                            O Payper mostra sempre qual é o tarifário mais barato do mercado. O tarifário recomendado é baseado não só no preço, como também pela votação do resto da comunidade e pontuação pela própria equipa do Payper.                    
+                        </p-accordionTab>
+                        <p-accordionTab header="Posso ser alertado caso venha a existir um novo tarifário mais barato?">
+                                Cada vez que um novo tarifário é lançado no mercado, o Payper analisa todos os clientes que tenham uma fatura introduzida com menos de 6 meses e, caso a poupança anual seja superior a 10 Euros, envia um alerta através de email e Push Notification a notificar a existência de um tarifário mais barato.
+                            </p-accordionTab>
+                            <p-accordionTab header="Quantas faturas posso carregar na minha conta?">
+                                Pode inserir quantas faturas desejar. Aliás, para a comparação de tarifário de eletricidade e gás, o ideal é ter pelo menos duas faturas, com um ano de intervalo - para podermos analisar a sua distribuição de consumo ao longo de um ano completo.
+                                As faturas com mais de 3 anos serão automaticamente eliminadas para poupar espaço.                    
+                            </p-accordionTab>
+                            <p-accordionTab header="Como é que posso inserir as minhas faturas?">
+                                O Payper permite que insira as suas faturas diretamente, usando a App, fazendo o forward do email da fatura para um endereço específico ou, usando um dos plugins disponibilizados para o Gmail ou Hotmail de reencaminhamento automático.       
+                            </p-accordionTab>
+                    </p-accordion>
+                </div>
+            </div>
+    </section>
+</div>
+
+<section name="about-us" class="aboutUsSection">
+    <div class="container">
+        <h2>O que é o Payper ?</h2>
+        <br/>
+        <p class="textSmall">
+            O Payper é o resultado de um projeto de inovação lançado por uma comunidade de profissionais nas áreas de energia, telecomunicação e software.<br /><br />
+            Nasceu do know-how no processamento de grande quantidade de dados (BigData) e análise de dados de faturas (Artificial Inteligence), este projeto visa disponibilizar, de forma gratuita, um gestor de faturas acessível para toda a gente.                
+        </p>
+    </div>
+</section>

@@ -1,0 +1,54 @@
+<section name="contractedService" class="contractedService">
+    <div class="container contractedServiceContainer">
+        <h1>O meu serviço</h1>
+        <br />
+        <div *ngIf="ContractedService != null">
+            <div class="row">
+                <div class="col-2">
+                    <img src="../../Assets/Icons/Functions/{{ContractedService.Type | lowercase }}.svg" width="40px">
+                </div>
+                <div class="col serviceDescription">
+                    {{ContractedService.Type | translateServiceTypePipe}}
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col">
+                    <h2>Detalhes Contrato</h2>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col">
+                    <span class="title">Nome Titular</span><br />
+                    <span class="textSmall">{{ContractedService.CustomerName}}</span>
+                </div>
+                <div class="col">
+                    <span class="title">CPE</span><br />
+                    <span class="textSmall">{{ContractedService.Endpoint}}</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col">
+                    <span class="title">Morada Fornecimento</span><br />
+                    <span class="textSmall">{{ContractedService.Address}}</span>
+                </div>
+                <div class="col">
+                    <span class="title">Potencia Contratada</span><br />
+                    <span class="textSmall">{{ContractedService.ElectricityPower}} kVA</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col">
+                    <span class="title">NIF</span><br />
+                    <span class="textSmall">{{ContractedService.CustomerVAT}}</span>
+                </div>
+                <div class="col">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

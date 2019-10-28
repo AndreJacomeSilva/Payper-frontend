@@ -1,0 +1,35 @@
+<section name="uploadHelp" class="uploadHelpSection">
+    <div class="container helpContainer">
+        <h2>Ajuda</h2>
+        <p-accordion [multiple]="true">
+            <p-accordionTab [selected]="true" header="Tem facturas no seu email?">
+                    Mobile:<br />
+                    Para enviar a sua fatura para o Payper analisar e organizar, é necessário:<br />
+                    Abra o seu gestor de correio eletrónico (Gmail, Outlook ou outro);<br />
+                    Pesquise os emails com as faturas de serviços. Por cada email, descarregue a sua fatura para o seu telemóvel.<br />
+                    Nota: Quantas mais faturas enviar, melhor :-)<br />
+                    Clique no botão “pesquisar no dispositivo” e escolha os ficheiros que descarregou.<br />
+                    Ajuda: Pode ordenar os ficheiros por data de modificação, assim os ficheiros que descarregou agora devem estar no topo.<br />
+                    <br /><br />
+                    Caso queira, pode automatizar este processo para que, automaticamente que chegar um email com uma fatura, o mesmo seja redireccionado para a sua conta no Payper. Clique aqui para mais informações.<br />
+                    <br /><br />
+                    Desktop:<br />
+                    Para enviar a sua fatura para o Payper analisar e organizar, é necessário:<br />
+                    Abra o seu gestor de correio eletrónico (Gmail, Outlook , Yahoo , PortugalMail, Sapo.pt ou outro);<br />
+                    Pesquise os emails com as faturas de serviços. Por exemplo, emails enviados de EDP Comercial faturaedp@edp.pt. Por cada email, descarregue a sua fatura para o seu telemóvel.<br />
+                    Nota: Quantas mais faturas enviar, melhor :-)<br />
+                    Clique no botão “pesquisar no dispositivo” e escolha os ficheiros que descarregou.<br />
+                    Ajuda: Por defeito, os ficheiros descarregados são colocados na pasta de downloads.<br />
+                    <br /><br />
+                    Caso queira, pode automatizar este processo para que, automaticamente que chegar um email com uma fatura, o mesmo seja redireccionado para a sua conta no Payper. Clique aqui para mais informações.                    
+            </p-accordionTab>
+            <p-accordionTab [selected]="true" header="Tem facturas em papel?">
+                Pode introduzir as faturas manualmente neste link!<br /><br/>
+
+                Em alternativa, contacte o seu prestador de serviço para passar a receber as faturas por email em formato PDF.<br/>
+                Clique aqui para ver um texto pro-forma que pode utilizar livremente.
+            </p-accordionTab>
+        </p-accordion>
+        <a href="#" [routerLink]="['/upload']"><div class="textSmall link">Voltar</div></a>
+    </div>
+</section>

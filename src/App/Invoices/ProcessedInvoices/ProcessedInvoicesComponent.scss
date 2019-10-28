@@ -1,0 +1,15 @@
+.invoicesSection
+ {
+    padding-top: 0;
+    h2 {
+        color: #00b4cb;
+    }
+
+    table > img {
+        max-width: 200px !important;
+    }
+    
+    .invoicesContainer {
+        position: relative;
+    }
+}

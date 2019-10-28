@@ -1,0 +1,10 @@
+<section class="invoicesTabMenu">
+    <div class="container tabsContainer">
+        <p-tabMenu [model]="TabItems" [activeItem]="TabItems[0]">
+            <ng-template pTemplate="item" let-item let-i="index">
+                <a href="#" routerLinkActive='active' [routerLink]="[item.link]">{{item.label}}</a>
+            </ng-template>
+        </p-tabMenu>
+    </div>
+</section>
+<router-outlet></router-outlet>  

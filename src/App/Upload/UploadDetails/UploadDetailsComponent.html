@@ -1,0 +1,27 @@
+<section name="upload" class="uploadSection">
+        <div class="container uploadContainer">
+            <h1>CARREGUE</h1>
+            <h2>A SUA FATURA</h2>
+            <img alt="upload" src="./Assets/Icons/Functions/upload.svg" width="150px"/>
+            <p-fileUpload name="myfile[]" 
+                chooseLabel="Pesquise no seu dispositivo" 
+                customUpload="true"
+                uploadLabel="Carregar"
+                cancelLabel="Cancelar"
+                accept="application/pdf" 
+                invalidFileTypeMessageSummary="{0}: <br /> Extensão inválida!"
+                invalidFileTypeMessageDetail="<br />Permitido apenas PDF"
+                (uploadHandler)="OnSubmitFileUpload($event)" 
+                maxFileSize="6000000"
+                (onSelect)="OnFileSelected($event)"
+                (onRemove)="OnFileRemoved($event)"
+                (onClear)="OnFileRemoved($event)">
+            </p-fileUpload>
+            <div *ngIf="HasUploadedFileSuccess">Ficheiro enviado com sucesso!</div>
+            <div *ngIf="HasUploadedFileError">Erro ao enviar o ficheiro!</div>  
+    
+            <a href="#" [routerLink]="['/upload/help']"><div class="textSmall link">Precisa de ajuda?</div></a>
+        </div>
+    </section>
+    
+    

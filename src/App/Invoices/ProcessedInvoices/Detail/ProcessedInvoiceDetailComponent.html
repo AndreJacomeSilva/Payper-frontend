@@ -1,0 +1,101 @@
+<section class="invoiceDetailSection">
+    <div class="container titleContainer alignLeft">
+        <div class="row">
+            <div class="col">
+                <h2>Detalhes da Fatura</h2>
+            </div>
+        </div>
+        <div class="invoicePreview">
+            <img src="../../Assets/Png/invoice_specimen.png" (click)="DownloadFile()" class="btn-ripple"/>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <span class="title">Data</span><br />
+                <span class="textSmall">{{Invoice.Date | date}}</span>
+            </div>
+            <div class="col">
+                
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <span class="title">NIF</span><br />
+                <span class="textSmall">{{Invoice.ContractedCostPlan?.BillingCustomer.CustomerVAT}}</span>
+            </div>
+            <div class="col">
+                <span class="title">CPE</span><br />
+                <span class="textSmall">{{Invoice.Endpoint}}</span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <span class="title">Produto</span><br />
+                <span class="textSmall">{{Invoice.ServiceType | translateServiceTypePipe}}</span>
+            </div>
+            <div class="col">
+                <span class="title">Potência Contratada</span><br />
+                <span class="textSmall">{{Invoice.ContractedCostPlan?.ContractedPower}} kVA</span>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <span class="title">Total</span><br />
+                <span class="textSmall">{{Invoice.TotalCost | number:'0.2-2'}}€</span>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <span class="title">Custo</span><br />
+                <span class="textSmall">{{Invoice.Cost | number:'0.2-2'}}€</span>
+            </div>
+            <div class="col">
+                <span class="title">Taxas</span><br />
+                <span class="textSmall">{{Invoice.TaxesCost | number:'0.2-2'}}€</span>
+            </div>
+        </div>
+        <hr>
+        <div class="title">Leituras</div>
+        <br />
+        <div class="container textSmall" *ngFor="let reading of Invoice.AccumulatedMeteringValues">
+            <div class="row">
+                <div class="col">
+                    <span class="title">Data Leitura</span><br />
+                    <span class="textExtraSmall">{{reading.Date | date}}</span>
+                </div>
+                <div class="col">
+                    <span class="title">Leitural Real</span><br />
+                    <span class="textExtraSmall">{{reading.IsRealReading }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="title">Total</span><br />
+                    <span class="textExtraSmall">{{reading.TotalAccumulatedValue | number:'0.2-2'}}</span>
+                </div>
+                <div class="col">
+                    <span class="title">Vazio</span><br />
+                    <span class="textExtraSmall">{{reading.SuperEconomicRateAccumulatedValue | number:'0.2-2'}}</span>
+                </div>
+            </div>   
+            <div class="row">
+                <div class="col">
+                    <span class="title">Ponta</span><br />
+                    <span class="textExtraSmall">{{reading.NormalRateAccumulatedValue | number:'0.2-2'}}</span>
+                </div>
+                <div class="col">
+                    <span class="title">Cheia</span><br />
+                    <span class="textExtraSmall">{{reading.EconomicRateAccumulatedValue | number:'0.2-2'}}</span>
+                </div>
+            </div>    
+            <hr>      
+        </div>
+        
+    </div>
+</section>

@@ -1,0 +1,66 @@
+.processingInvoices {
+    background-color: #707070;
+    color: #fff;
+    text-align: left;
+    min-height: 80px;
+    padding-top: 3px;
+
+    .description {
+        margin-top: 10px;
+    }
+
+    .close {
+        text-align: right;
+        color: #fff;
+        font-size: 0.8rem;
+        text-shadow: none;
+        opacity: 1;
+    }
+}
+
+.compareTariffs {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    .contractedServices {
+        h2 {
+            text-align: left;
+        }
+    }
+}
+
+li.nav-item a {
+    img {
+        opacity: 0.4;
+    }
+    &.active img {
+        opacity: 1;
+    }
+}
+
+.address {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-top: 10px;
+}
+
+.nav-link {
+    padding: .2rem .2rem;
+}
+
+.anualCostExplanation {
+    text-align: left;
+}
+
+.comparisonLink {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.compareTariffsContainer {
+    position: relative;
+}
+

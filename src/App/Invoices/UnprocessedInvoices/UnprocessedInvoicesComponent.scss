@@ -1,0 +1,31 @@
+.invoicesSection
+ {
+    padding-top: 0;
+    h2 {
+        color: #00b4cb;
+    }
+
+    table > img {
+        max-width: 200px !important;
+    }
+
+    span {
+        &.processing{
+            color: #ffb000;
+        }
+        &.error {
+            color: #B70000;
+        }
+        &.processing,
+        &.error {
+            font-weight: 700;
+        }
+
+    }
+
+    .OriginalName {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

@@ -1,0 +1,17 @@
+.time-to {
+  text-align:center;
+  color:white;
+  font-size:35px;
+  letter-spacing:2px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  span {
+    display:block;
+    font-size: 2rem;
+    color:#00b4cb;
+
+    @media (min-width: 769px) {
+        font-size: 4rem;
+    }
+  }
+}

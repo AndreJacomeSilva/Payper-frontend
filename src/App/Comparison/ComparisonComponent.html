@@ -1,0 +1,95 @@
+<section name="comparison" class="comparisonSection alignLeft">
+    <div class="container titleContainer">
+        <h2>Comparador de Tarifarios</h2>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" *ngFor="let service of ContractedServices;" [ngClass]="{'isShowingMockData':IsShowingMockData===true}">
+                <a (click)="SetActiveTab(service.Id)" class="nav-link" [ngClass]="{ 'active':ActiveTab===service.Id}" id="{{service.Id}}" data-toggle="tab" href="#{{service.Id}}" role="tab" aria-controls="home" aria-selected="true">
+                    <img src="../../Assets/Icons/Functions/{{service.ServiceType | lowercase }}.svg" width="40px">
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="tab-content textSmall" id="myTabContent" *ngFor="let service of ContractedServices" [ngClass]="{'isShowingMockData':IsShowingMockData===true}">
+        <div class="tab-pane fade" [ngClass]="{'show active':ActiveTab===service.Id}" id="{{service.Id}}" role="tabpanel" >
+            <div class="container currentSituationContainer textSmall">
+                <div class="row">
+                    <div class="col">
+                        <div class="address alignLeft">
+                            {{ service.Address.CityName }}, {{ service.Address.Line }}
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../../Assets/Png/Providers/{{service.Invoices[0].ContractedCostPlan.ServiceProvider.CodeName | lowercase }}.png" width="100px"/>
+                    </div>
+                    <div class="col-8">
+                        <div class="title"></div>
+                        <div class="subtitle">
+                            SITUAÇÃO ACTUAL
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row currentValues">
+                    <div class="col">
+                        <div class="header">
+                            Opção Horária
+                        </div>
+                        <div class="value">
+                            {{service.Invoices[0].ContractedCostPlan.MultiRate | translateMultiRatePipe}}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="header">
+                            Potência Contratada
+                        </div>
+                        <div class="value">
+                            {{service.Invoices[0].ContractedCostPlan.ContractedPower}} kVA
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="header">
+                            Consumo Anual
+                        </div>
+                        <div class="value">
+                            {{service.Consumption.TotalYearlyConsumption | number:'0.2-2'}} kwH
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container simulationsContainer textSmall">
+                <div class="row">
+                    <div class="col">
+                        <div class="availableSimulations">
+                            <div *ngFor="let simulation of AvailableSimulations" class="container simulation">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <div class="logoContainer">
+                                            <img src="../../Assets/Png/Providers/{{simulation.CostPlan.ServiceProvider.CodeName | lowercase }}.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="simulationTariffName">{{simulation.CostPlan.CodeName}}</div>
+                                        <div>{{simulation.CostPlan.MultiRate | translateMultiRatePipe}}</div>
+                                    </div>
+                                    <div class="col-2 savingsPerYear">
+                                        <div [ngClass]="{'saving': simulation.UntaxedYearlySaving < 0, 'loss': simulation.UntaxedYearlySaving > 0}" >{{simulation.UntaxedYearlySaving | number:'0.2-2'}}€</div>
+                                        <div class="textExtraSmall">/ano</div>
+                                    </div>
+                                    <div class="col-1 arrowContainer">
+                                        <div class="arrowNext"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

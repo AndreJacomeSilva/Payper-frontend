@@ -1,0 +1,41 @@
+<section name="invoices" class="invoicesSection">
+    <div class="container invoicesContainer">
+        <alertbox *ngIf="IsShowingMockData"
+            [Text]="'Ainda não tem dados suficientes para este gráfico. Carregue faturas para desbloquear!'"
+            [AlertType]="'alert-info'">
+        </alertbox> 
+        <p-table #dt [columns]="TableColumns" [value]="Invoices" [paginator]="true" [rows]="10" sortField="Date" sortOrder="-1">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon *ngIf="col.field != 'Type'" [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                        <p-multiSelect *ngSwitchCase="'Type'" [options]="Services" defaultLabel="Todos" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                        <!-- <input *ngSwitchCase="'service'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"> -->
+                        <p-dropdown *ngSwitchCase="'Supplier'" [options]="Providers" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                        <input *ngSwitchCase="'Date'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                        <div *ngSwitchCase="'Total'">
+                            <span *ngIf="TotalFilter">< {{TotalFilter}}</span>
+                            <i class="fa fa-close" (click)="TotalFilter=null;dt.filter(null, col.field, col.filterMatchMode)" style="cursor:pointer" *ngIf="TotalFilter"></i>
+                            <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="TotalFilter" [min]="0" [max]="2000" (onChange)="OnTotalChange($event, dt)"></p-slider>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" [ngSwitch]="col.field" [ngClass]="col.field" (click)="OpenInvoiceDetail(rowData['Id'])">
+                        <span *ngSwitchCase="'Type'"><img src="../../Assets/Icons/Functions/{{rowData[col.field] | lowercase }}.svg" width="20px"/></span>
+                        <span *ngSwitchCase="'Supplier'"><img src="../../Assets/Png/Providers/{{rowData[col.field] | lowercase }}.png" width="100%"/></span>
+                        <span *ngSwitchCase="'Date'">{{rowData[col.field] | date}}</span>
+                        <span *ngSwitchCase="'Total'">{{rowData[col.field]}}€</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</section>

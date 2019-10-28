@@ -1,0 +1,43 @@
+<section name="dashboard" class="dashboardSection">
+    <div class="container processingInvoices" *ngIf="IsToShowProcessingInvoices" [@enterAnimation]>
+        <div class="row title">
+            <div class="col-10">Faturas em Análise</div>
+            <div class="col close" (click)="CloseProcessingInvoices()">x</div>
+        </div>
+        <div class="row description textSmall">
+            <div class="col">
+                {{ LatestUnprocessedInvoice?.OriginalName }}, enviado {{ LatestUnprocessedInvoice?.UploadDate | dateTimeAgo }} <br />
+                Tempo estimado em falta {{ EstimatedTimeToProcessInMinutes }} minutos.
+            </div>
+        </div>
+    </div>
+    <div class="container compareTariffs">
+        <div class="contractedServices">
+            <h2>Comparador de Tarifários</h2>
+
+            <div class="compareTariffsContainer">
+                <alertbox *ngIf="IsShowingMockData"
+                    [Text]="'Ainda não tem dados suficientes para este gráfico. Carregue faturas para desbloquear!'"
+                    [AlertType]="'alert-info'">
+                </alertbox>                
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" *ngFor="let service of ContractedServices;" >
+                        <a (click)="SetActiveTab(service.Id)" class="nav-link" [ngClass]="{ 'active':ActiveTab===service.Id}" id="{{service.Id}}" data-toggle="tab" href="#{{service.Id}}" role="tab" aria-controls="home" aria-selected="true">
+                            <img src="../../Assets/Icons/Functions/{{service.ServiceType | lowercase }}.svg" width="40px">
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content textSmall" id="myTabContent" *ngFor="let service of ContractedServices">
+                    <div class="tab-pane fade" [ngClass]="{'show active':ActiveTab===service.Id}" id="{{service.Id}}" role="tabpanel" >
+                        <div class="address alignLeft">
+                            {{ service.Address.CityName }}, {{ service.Address.Line }}
+                        </div>
+                        <div class="chart" id="chart-{{service.Id}}" style="width: 100%; height: 150px"></div>
+                        <div class="comparisonLink"><button class="button btn-ripple" [routerLink]="['/comparison']">Poupar Já!</button></div>
+                    </div>
+                </div>
+                <div class="textExtraSmall anualCostExplanation">* Os custos anuais apenas incluem as componentes variáreis. Os impostos fixos não estão incluídos, uma vez que são constantes em todos os tarifários.</div>
+            </div>
+        </div>
+    </div>
+</section>
